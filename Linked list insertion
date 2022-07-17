@@ -1,0 +1,93 @@
+#include<iostream>
+
+using namespace std;
+
+class Node{
+    public: 
+    int data;
+    Node* next;
+
+// public:
+    Node (int value){
+        data = value;
+        next = NULL;
+    }
+};
+
+void print(Node*&head){
+    Node*temp;
+    temp = head;
+    while (temp!=NULL)
+    {
+        cout<<temp->data<<" ";
+        temp = temp->next;
+    }
+    
+
+}
+
+void insertatHead(Node*&head,int data){
+    Node*n2 = new Node(data);
+    n2->next = head;
+    head = n2; 
+}
+
+void insertatTail(Node*&tail , int data){
+    Node* n3 = new Node(data);
+    tail->next = n3;
+    tail = n3;
+}
+
+void insertatPosition(Node*&tail, Node*&head, int position, int data){
+
+    if(position == 1){
+        insertatHead(head,data);
+        return;
+    }
+
+    Node*temp = head;
+    int count = 1;
+
+
+
+    while(count<position-1){
+        temp = temp->next;
+        count++;
+    }
+    if (temp->next==NULL){
+        insertatTail(head,data);
+        return;
+    }
+    {
+        /* code */
+    }
+    
+    Node*n9 = new Node(data);
+    n9->next = temp->next;
+    temp->next = n9;
+    }
+
+
+
+int main(int argc, char const *argv[])
+{
+    Node*n1 = new Node(10);
+    Node*head = n1;
+    Node*tail = n1;
+    
+    
+
+    insertatTail(tail,77);
+
+    insertatTail(tail,17);
+
+    insertatTail(tail,45);
+
+   
+    
+    insertatPosition(tail, head, 3, 100);
+    
+    print(head);
+    
+    return 0;
+}
